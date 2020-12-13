@@ -1,0 +1,178 @@
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" demote-non-dropping-particle="sort-only">
+  <info>
+    <title>温州医科大学毕业论文 - Xiaoxin Chen, Graduate Student</title>
+    <id>http://csl.mendeley.com/styles/542759611/Wenzhou-Medical-University-Thesis</id>
+    <author>
+      <uri>https://www.mendeley.com/profiles/xiaoxin-chen3/</uri>
+      <name>Xiaoxin Chen</name>
+    </author>
+    <contributor>
+      <name>Sebastian Karcher</name>
+    </contributor>
+    <contributor>
+      <name>Xiaoxin Chen, Graduate Student</name>
+      <uri>https://www.mendeley.com/profiles/xiaoxin-chen3/</uri>
+    </contributor>
+    <category citation-format="numeric"/>
+    <updated>2020-12-13T19:11:14+00:00</updated>
+  </info>
+
+  <locale>
+    <terms>
+      <term name="edition" form="short">edn.</term>
+    </terms>
+  </locale>
+
+  <macro name="author">
+    <names variable="author">
+      <name delimiter-precedes-et-al="always" delimiter-precedes-last="always" et-al-min="4" et-al-use-first="3" initialize-with="." name-as-sort-order="all" sort-separator=" "/>
+      <label form="short" text-case="capitalize-first" prefix=" (" suffix=")"/>
+      <et-al font-style="normal"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+      </substitute>
+    </names>
+  </macro>
+
+  <macro name="container-author">
+    <names variable="container-author">
+      <name name-as-sort-order="all" sort-separator=", " initialize-with="." delimiter-precedes-last="never" delimiter=", "/>
+      <label form="short" text-case="capitalize-first" prefix=" (" suffix=")"/>
+      <substitute>
+        <names variable="editor"/>
+        <names variable="translator"/>
+      </substitute>
+    </names>
+  </macro>
+
+  <macro name="edition">
+    <choose>
+      <if is-numeric="edition">
+        <group delimiter=" ">
+          <number prefix=", " variable="edition" form="ordinal"/>
+          <text term="edition" text-case="capitalize-first" font-variant="normal"/>
+        </group>
+      </if>
+      <else>
+        <text variable="edition" prefix=", "/>
+      </else>
+    </choose>
+  </macro>
+
+  <macro name="publisher">
+    <group>
+      <text variable="publisher"/>
+      <text macro="year-date"/>
+      <text macro="edition"/>
+      <number prefix=", " variable="chapter-number"/>
+      <text macro="page"/>
+    </group>
+  </macro>
+
+  <macro name="year-date">
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year" prefix=", "/>
+        </date>
+      </if>
+      <else>
+        <text term="no date" prefix=", "/>
+      </else>
+    </choose>
+  </macro>
+
+  <macro name="page">
+    <group delimiter=" ">
+      <text variable="page" prefix=": "/>
+    </group>
+  </macro>
+
+  <macro name="issue">
+    <text variable="issue" prefix="(" suffix=")"/>
+  </macro>
+
+  <citation collapse="citation-number" after-collapse-delimiter="; ">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout vertical-align="sup" delimiter=", " prefix="[" suffix="]">
+      <text variable="citation-number" vertical-align="sup"/>
+      <group delimiter=" ">
+        <label variable="locator" form="short" prefix=" "/>
+        <text variable="locator"/>
+      </group>
+    </layout>
+  </citation>
+
+  <bibliography entry-spacing="1" second-field-align="flush" et-al-min="7" et-al-use-first="3">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout>
+      <text variable="citation-number" prefix="[" suffix="]"/>
+      <text macro="author" suffix=" "/>
+      <text variable="title" strip-periods="false" quotes="false" vertical-align="baseline" suffix=". "/>
+      <choose>
+        <if type="book report" match="any">
+          <text macro="publisher"/>
+          <text value=". "/>
+        </if>
+        <else-if type="paper-conference chapter speech" match="any">
+          <group delimiter=" " suffix=". ">
+            <text term="in" text-case="capitalize-first"/>
+            <text macro="container-author" suffix=":"/>
+            <text variable="container-title" quotes="true"/>
+            <text value=". "/>
+            <group>
+              <text variable="event" suffix=". "/>
+              <text macro="publisher"/>
+              <text macro="page"/>
+            </group>
+          </group>
+        </else-if>
+        <else-if type="article-journal article-magazine article-newspaper" match="any">
+          <group suffix=". ">
+            <group>
+              <text variable="container-title" font-style="normal"/>
+              <text macro="year-date"/>
+              <text variable="volume" font-weight="normal" prefix=", " suffix=" "/>
+              <text macro="issue"/>
+              <text macro="page"/>
+            </group>
+          </group>
+        </else-if>
+        <else-if type="patent thesis" match="any">
+          <group suffix=". ">
+            <text variable="genre"/>
+            <text variable="publisher" prefix=", "/>
+            <group delimiter=" ">
+              <text variable="authority" prefix=", "/>
+              <text variable="number"/>
+            </group>
+            <text macro="year-date"/>
+          </group>
+        </else-if>
+        <else-if type="webpage post-weblog" match="any">
+          <group suffix=". ">
+            <text variable="URL" suffix=", "/>
+            <group delimiter=" ">
+              <text term="accessed"/>
+              <date variable="accessed" date-parts="year-month" form="text"/>
+            </group>
+          </group>
+        </else-if>
+        <else>
+          <group delimiter=", " prefix=" " suffix=". ">
+            <group delimiter=", ">
+              <text macro="publisher"/>
+              <text variable="volume"/>
+              <text macro="page"/>
+            </group>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>
