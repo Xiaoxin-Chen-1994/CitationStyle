@@ -1,4 +1,4 @@
-# CitationStyle
+# Wenzhou Medical University Citation Style
 
 This is a folder of citation style that can be used in Mendeley. 
 
